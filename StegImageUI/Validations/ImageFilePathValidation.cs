@@ -58,27 +58,28 @@ namespace StegImageUI.Validations
                     {
                         case ".jpg":
                         case ".jpeg":
-                            // JFIF or Exif
-                            isCorrect = (null == bytes) || ((74 == bytes[6]) && (70 == bytes[7]) && (73 == bytes[8]) && (70 == bytes[9]))
-                                                          || ((69 == bytes[6]) && (120 == bytes[7]) && (105 == bytes[8]) && (102 == bytes[9]));
+                            // JFIF or Exif or ICC
+                            isCorrect = (null == bytes) || ((0x4A == bytes[6]) && (0x46 == bytes[7]) && (0x49 == bytes[8]) && (0x46 == bytes[9]))
+                                                          || ((0x45 == bytes[6]) && (0x78 == bytes[7]) && (0x69 == bytes[8]) && (0x66 == bytes[9]))
+                                                          || ((0x49 == bytes[6]) && (0x43 == bytes[7]) && (0x43 == bytes[8]));
                             break;
                         case ".bmp":
                             // BM
-                            isCorrect = (null == bytes) || ((66 == bytes[0]) && (77 == bytes[1]));
+                            isCorrect = (null == bytes) || ((0x42 == bytes[0]) && (0x4D == bytes[1]));
                             break;
                         case ".png":
-                            // ‰PNG
-                            isCorrect = (null == bytes) || ((137 == bytes[0]) && (80 == bytes[1]) && (78 == bytes[2]) && (71 == bytes[3]));
+                            // PNG
+                            isCorrect = (null == bytes) || ((0x89 == bytes[0]) && (0x50 == bytes[1]) && (0x4E == bytes[2]) && (0x47 == bytes[3]));
                             break;
                         case ".gif":
                             // GIF
-                            isCorrect = (null == bytes) || ((71 == bytes[0]) && (73 == bytes[1]) && (70 == bytes[2]) && (56 == bytes[3]));
+                            isCorrect = (null == bytes) || ((0x47 == bytes[0]) && (0x49 == bytes[1]) && (0x46 == bytes[2]) && (0x38 == bytes[3]));
                             break;
                         case ".tif":
                         case ".tiff":
                             // TIFF
-                            isCorrect = (null == bytes) || ((73 == bytes[0]) && (73 == bytes[1]) && (42 == bytes[2]) && (0 == bytes[3]))
-                                || ((77 == bytes[0]) && (77 == bytes[1]) && (0 == bytes[2]) && (42 == bytes[3]));
+                            isCorrect = (null == bytes) || ((0x49 == bytes[0]) && (0x49 == bytes[1]) && (0x2A == bytes[2]) && (0 == bytes[3]))
+                                || ((0x4D == bytes[0]) && (0x4D == bytes[1]) && (0 == bytes[2]) && (0x2A == bytes[3]));
                             break;
                         default:
                             break;
