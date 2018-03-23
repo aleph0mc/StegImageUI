@@ -1,4 +1,4 @@
-# SetgImageUI
+# StegImageUI
 
 Wpf application for image steganography.
 
