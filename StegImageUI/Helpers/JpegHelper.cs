@@ -353,7 +353,7 @@ namespace StegImageUI.Helpers
         }
 
         /// <summary>
-        /// It Contains the DCT coefficients in blocks per compoent and the full array
+        /// It Contains the DCT coefficients in blocks per component and the full array
         /// </summary>
         public struct DCTCoefficients
         {
